@@ -31,15 +31,16 @@ class Database {
     }
     //fetching list of data from the SQL Query results
     public function fetch_array($result) {
-        if($result->num_row > 0) {
+        if($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
-                $result_array[] = $row; //create sempty array and add each row
+                $result_array[] = $row; //create empty array and add each row
             }
             return $result_array;
         }
     }
 
     //fetching single row of data from the sql query
+    // Getting only 1 row
     public function fetch_row($result) {
      if($result->num_rows > 0) {
          return $result->fetch_assoc();
