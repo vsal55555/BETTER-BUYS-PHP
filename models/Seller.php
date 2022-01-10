@@ -86,6 +86,16 @@ class Seller {
             }
         }
     }
+
+    //method to return the list of seller
+    public function all_sellers() {
+        global $database;
+
+        $sql = "SELECT id, name, image, address FROM $this->table";
+        $result = $database->query($sql);
+
+        return $database->fetch_array($result);//fetch all column and return as array
+    }
 }
 $seller = new Seller();
 

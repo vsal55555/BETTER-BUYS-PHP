@@ -33,7 +33,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
         echo json_encode(array('success' => 0, 'message' => 'Password is required'));
         die();
     }
-
+    //saving image of seller
     $seller_images_folder = '../../assets/seller_images/';
 
     if(!is_dir($seller_images_folder)) {
@@ -44,7 +44,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
        $file_tmp = $_FILES['image']['tmp_name'];
        $extension = end(explode('.', $file_name));
 
-       $new_file_name = $seller->email . "_profile" . $extension;
+       $new_file_name = $seller->email . "_profile" . "." . $extension;
        move_uploaded_file($file_tmp, $seller_images_folder . "/" . $new_file_name);
 
        $seller->image = 'seller_images/' . $new_file_name; //address and save to db
