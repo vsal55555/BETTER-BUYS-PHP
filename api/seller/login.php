@@ -30,9 +30,10 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
     $s = $seller->login();
     if(gettype($s) === 'array') {
     http_response_code(200);
-    echo json_encode(array('success' => 0, 'message' => 'Login Successful', 'seller' => $s));
+    $character = 'eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJVbmxpbWl0SldUIiwic3ViIjoiZS1kaGViYUB1bmxpb';//$token = bin2hex(random_bytes(16)); 
+    echo json_encode(array('success' => 0, 'message' => 'Login Successful', 'seller' => $s,'token' => str_shuffle($character)));
     } else {
-    http_response_code(402);
+    http_response_code(401);
     echo json_encode(array('success' => 0, 'message' => 'Login UnSuccessful'));
     }
 
